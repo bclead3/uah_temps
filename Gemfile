@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'capybara', '>= 3.26'   # Adds support for Capybara system testing and selenium driver
+  gem 'database_cleaner-active_record'
   gem 'listen', '~> 3.3'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
