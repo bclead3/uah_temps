@@ -43,3 +43,6 @@ yarn-debug.log*
 .yarn-integrity
 
 white_board.rb
+
+# Ignore code coverage directory
+/coverage

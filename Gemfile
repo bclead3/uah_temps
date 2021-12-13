@@ -44,12 +44,17 @@ group :development, :test do
   gem 'rubocop', '~> 1.23', require: false
   gem 'rubocop-rails', require: false
   gem 'selenium-webdriver' # Adds support for Capybara system testing and selenium driver
+  gem 'simplecov'
   gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'webdrivers' # Easy installation and use of web drivers to run system tests with browsers
 end
 
 group :development do
   gem 'web-console', '>= 4.1.0' # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+end
+
+group :test do
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
