@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @place_temp.place %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @place_temp.date %>
+</p>
+
+<p>
+  <strong>Temp:</strong>
+  <%= @place_temp.temp %>
+</p>
+
+<%= link_to 'Edit', edit_place_temp_path(@place_temp) %> |
+<%= link_to 'Back', place_temps_path %>
