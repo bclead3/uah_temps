@@ -1,4 +1,5 @@
 class PlaceTemp < ApplicationRecord
+  paginates_per 100
 
   validates :place, presence: true
   validates :date, presence: true

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Place Temps</h1>
-
+<%= paginate @place_temps %>
 <table>
   <thead>
     <tr>
@@ -17,10 +17,10 @@
   <tbody>
     <% @place_temps.each_with_index do |place_temp, row_index| %>
       <tr>
-        <td><%= row_index %></td>
+        <td><%= (row_index + 1) %></td>
         <td><%= place_temp.id %></td>
         <td><%= place_temp.place %></td>
-        <td><%= place_temp.date %></td>
+        <td><%= format_date(place_temp.date) %></td>
         <td><%= place_temp.temp %></td>
         <td><%= link_to 'Show', place_temp %></td>
         <%- link_to 'Edit', edit_place_temp_path(place_temp) %>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Place Temp', new_place_temp_path %>
+<%- link_to 'New Place Temp', new_place_temp_path %>

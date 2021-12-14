@@ -3,7 +3,10 @@ class PlaceTempsController < ApplicationController
 
   # GET /place_temps or /place_temps.json
   def index
-    @place_temps = PlaceTemp.all.order(:place, :date)
+    respond_to do |format|
+      format.json { @place_temps = PlaceTemp.order(:place, :date) }
+      format.html { @place_temps = PlaceTemp.order(:place, :date).page params[:page] }
+    end
   end
 
   # GET /place_temps/1 or /place_temps/1.json

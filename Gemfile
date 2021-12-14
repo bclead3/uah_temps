@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# pagination
+gem 'kaminari'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'capybara', '>= 3.26' # Adds support for Capybara system testing and selenium driver
@@ -44,7 +47,6 @@ group :development, :test do
   gem 'rubocop', '~> 1.23', require: false
   gem 'rubocop-rails', require: false
   gem 'selenium-webdriver' # Adds support for Capybara system testing and selenium driver
-  gem 'simplecov'
   gem 'spring' # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'webdrivers' # Easy installation and use of web drivers to run system tests with browsers
 end
