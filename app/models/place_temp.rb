@@ -14,4 +14,13 @@ class PlaceTemp < ApplicationRecord
     write_attribute(:created_at, DateTime.now) unless self.created_at.present?
     write_attribute(:updated_at, DateTime.now)
   end
+
+  def to_h
+    {
+      id: self.id,
+      place: self.place,
+      date: self.date.to_s,
+      temp: self.temp
+    }
+  end
 end
