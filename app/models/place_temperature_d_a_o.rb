@@ -6,16 +6,19 @@ class PlaceTemperatureDAO
                   'South of Tropics Land', 'South of Tropics Ocean', 'Arctic Area (60 to 90)', 'Arctic Area Land', 'Arctic Area Ocean',
                   'Antarctic Area (-90 to -60)', 'Antarctic Area Land', 'Antarctic Area Ocean', 'USA Lower 48', 'USA Lower 48 & Alaska',
                   'Australia']
+
+  DEFAULT_COLUMN_SIZE = 29
+
   attr_reader :year, :month, :date, :headers, :output_arr
 
-
   def initialize(place_temperature_array)
-    if place_temperature_array.size == 29 && place_temperature_array.first != 'Year'
-      @year = place_temperature_array.first.to_i
-      @month = place_temperature_array[1].to_i
+    if place_temperature_array.size == DEFAULT_COLUMN_SIZE && place_temperature_array.first != 'Year'
+      float_arr = place_temperature_array.map(&:to_f)
+      @year = float_arr.first.to_i
+      @month = float_arr[1].to_i
       dt_str = "#{@year}-#{@month}-01"
       @date = Date.parse(dt_str)
-      process(place_temperature_array)
+      process(float_arr)
     end
   end
 
@@ -26,12 +29,12 @@ class PlaceTemperatureDAO
   def process(place_temp_arr)
     @output_arr = []
     dt_str = date_str
-    (2..(place_temp_arr.size-1)).each do |indx|
-      place = FULL_HEADERS[indx]
-      tmp = place_temp_arr[indx]
-      #puts "#{dt_str}\t#{place}\t#{tmp}"
+    (2..(place_temp_arr.size-1)).each do |col_index|
+      place = FULL_HEADERS[col_index]
+      tmp = place_temp_arr[col_index]
+      Rails.logger.debug "#{dt_str}\t#{place}\t#{tmp}"
       pl_tmp = PlaceTemp.find_or_create_by(place: place, date: dt_str, temp: tmp)
-      #puts pl_tmp.inspect
+      Rails.logger.debug pl_tmp.inspect
       @output_arr << pl_tmp
     end
     @output_arr

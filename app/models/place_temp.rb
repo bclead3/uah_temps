@@ -1,5 +1,10 @@
 class PlaceTemp < ApplicationRecord
 
+  validates :place, presence: true
+  validates :date, presence: true
+  validates :temp, presence: true
+  validates :temp, numericality: true
+
   def initialize(params)
     super
     write_attribute(:place, params[:place])

@@ -4,6 +4,7 @@ RSpec.describe "place_temps/new", type: :view do
   before(:each) do
     assign(:place_temp, PlaceTemp.new(
       place: "MyString",
+      date: Date.today,
       temp: 1.5
     ))
   end

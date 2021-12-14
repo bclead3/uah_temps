@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_053816) do
+ActiveRecord::Schema.define(version: 2021_12_13_235320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "place_temps", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "place"
-    t.date "date"
-    t.float "temp"
+    t.string "place", null: false
+    t.date "date", null: false
+    t.float "temp", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["place", "date"], name: "index_place_temps_on_place_and_date"
   end
 
 end

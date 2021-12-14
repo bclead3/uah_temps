@@ -5,10 +5,12 @@ RSpec.describe "place_temps/index", type: :view do
     assign(:place_temps, [
       PlaceTemp.create!(
         place: "Place",
+        date: (Date.today - 1.day),
         temp: 2.5
       ),
       PlaceTemp.create!(
         place: "Place",
+        date: Date.today,
         temp: 2.5
       )
     ])
