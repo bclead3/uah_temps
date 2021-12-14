@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,19 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_235320) do
-
+ActiveRecord::Schema.define(version: 20_211_213_235_320) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
-  enable_extension "plpgsql"
+  enable_extension 'pgcrypto'
+  enable_extension 'plpgsql'
 
-  create_table "place_temps", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "place", null: false
-    t.date "date", null: false
-    t.float "temp", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["place", "date"], name: "index_place_temps_on_place_and_date"
+  create_table 'place_temps', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.string 'place', null: false
+    t.date 'date', null: false
+    t.float 'temp', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[place date], name: 'index_place_temps_on_place_and_date'
   end
-
 end

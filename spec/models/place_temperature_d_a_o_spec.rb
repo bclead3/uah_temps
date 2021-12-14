@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PlaceTemperatureDAO, type: :model do
-
-  let(:line_arr) { %w[1978 12 -0.48 -0.51 -0.47 -0.44 -0.46 -0.42 -0.52 -0.62 -0.50 -0.60 -0.62 -0.59 -0.37 -0.44 -0.30 -0.46 -0.55 -0.45 -0.39 -0.68 -0.06 -0.45 -0.38 -0.49 -1.29 -1.15 -1.29].map(&:to_f) }
+  let(:line_arr) do
+    %w[1978 12 -0.48 -0.51 -0.47 -0.44 -0.46 -0.42 -0.52 -0.62 -0.50 -0.60 -0.62 -0.59 -0.37 -0.44 -0.30 -0.46 -0.55 -0.45 -0.39 -0.68 -0.06 -0.45 -0.38 -0.49 -1.29 -1.15
+       -1.29].map(&:to_f)
+  end
 
   it 'parses a line starting with a year' do
     dao = PlaceTemperatureDAO.new(line_arr)

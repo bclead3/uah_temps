@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlaceTemperatureDAO
   HEADERS = %w[Year Mo Globe Land Ocean NH Land Ocean SH Land Ocean Trpcs Land Ocean NoExt Land Ocean SoExt Land Ocean NoPol Land Ocean SoPol Land Ocean USA48 USA49 AUST].freeze
   FULL_HEADERS = ['Year', 'Month', 'Globe', 'Globe Land', 'Globe Ocean', 'N. Hemisphere', 'N. Hemisphere Land', 'N. Hemisphere Ocean', 'S. Hemisphere',
@@ -5,7 +7,7 @@ class PlaceTemperatureDAO
                   'North of Tropics (20 to 90)', 'North of Tropics Land', 'North of Tropics Ocean', 'South of Tropics (-90 to -20)',
                   'South of Tropics Land', 'South of Tropics Ocean', 'Arctic Area (60 to 90)', 'Arctic Area Land', 'Arctic Area Ocean',
                   'Antarctic Area (-90 to -60)', 'Antarctic Area Land', 'Antarctic Area Ocean', 'USA Lower 48', 'USA Lower 48 & Alaska',
-                  'Australia']
+                  'Australia'].freeze
 
   DEFAULT_COLUMN_SIZE = 29
 
@@ -29,7 +31,7 @@ class PlaceTemperatureDAO
   def process(place_temp_arr)
     @output_arr = []
     dt_str = date_str
-    (2..(place_temp_arr.size-1)).each do |col_index|
+    (2..(place_temp_arr.size - 1)).each do |col_index|
       place = FULL_HEADERS[col_index]
       tmp = place_temp_arr[col_index]
       Rails.logger.debug "#{dt_str}\t#{place}\t#{tmp}"

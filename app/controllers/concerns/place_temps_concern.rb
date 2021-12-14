@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module PlaceTempsConcern
   def keyitize(str)
     paren_index = str.index('(')
-    str = str[0..(paren_index-2)] if paren_index
+    str = str[0..(paren_index - 2)] if paren_index
     str.downcase.gsub(' land', '').gsub(' ocean', '').gsub('.', '').gsub(' ', '_').gsub('&', 'w')
   end
 
@@ -11,7 +13,7 @@ module PlaceTempsConcern
       key = keyitize(header)
       if [0, 3, 6, 9, 12, 15, 18, 21].member?(header_index)
         puts "#{header_index}\t#{key}"
-        return_hash[keyitize(header).to_sym] = {all: {}, land: {}, ocean: {} }
+        return_hash[keyitize(header).to_sym] = { all: {}, land: {}, ocean: {} }
       elsif [24, 25, 26].member?(header_index)
         puts "#{header_index}\t#{key}"
         return_hash[keyitize(header).to_sym] = {}
