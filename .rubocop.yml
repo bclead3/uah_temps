@@ -1,5 +1,17 @@
 AllCops:
   NewCops: enable
+  Exclude:
+    - 'spec'
+    - 'white_board.rb'
 
 Layout/LineLength:
   Max: 180
+
+Metrics/MethodLength:
+    Max: 30
+
+Metrics/BlockLength:
+    Max: 30
+
+Style/Documentation:
+  Enabled: false

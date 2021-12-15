@@ -14,14 +14,14 @@ class PlaceTemperatureDAO
   attr_reader :year, :month, :date, :headers, :output_arr
 
   def initialize(place_temperature_array)
-    if place_temperature_array.size == DEFAULT_COLUMN_SIZE && place_temperature_array.first != 'Year'
-      float_arr = place_temperature_array.map(&:to_f)
-      @year = float_arr.first.to_i
-      @month = float_arr[1].to_i
-      dt_str = "#{@year}-#{@month}-01"
-      @date = Date.parse(dt_str)
-      process(float_arr)
-    end
+    return if place_temperature_array.size < DEFAULT_COLUMN_SIZE || place_temperature_array.first == 'Year'
+
+    float_arr = place_temperature_array.map(&:to_f)
+    @year = float_arr.first.to_i
+    @month = float_arr[1].to_i
+    dt_str = "#{@year}-#{@month}-01"
+    @date = Date.parse(dt_str)
+    process(float_arr)
   end
 
   def date_str

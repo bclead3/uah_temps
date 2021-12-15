@@ -21,7 +21,7 @@ module PlaceTempsConcern
     return_hash
   end
 
-  def new_hash_format
+  def new_hash_format # rubocop:disable Metrics/AbcSize
     new_hash = blank_hash
     PlaceTemperatureDAO::FULL_HEADERS[2..29].each_with_index do |header, header_index|
       key = keyitize(header).to_sym
@@ -49,7 +49,7 @@ module PlaceTempsConcern
 
   private
 
-  def populate_hash_section(header, key, new_hash, sub_key = nil)
+  def populate_hash_section(header, key, new_hash, sub_key = nil) # rubocop:disable Metrics/AbcSize
     place_temp_arr = PlaceTemp.where(place: header).order(:date)
     place_temp_arr.each_with_index do |place_temp, pt_index|
       pt_increment_idx = pt_index + 1
@@ -66,37 +66,4 @@ module PlaceTempsConcern
       end
     end
   end
-
-  # def populate_all_hash_section(header, key, new_hash)
-  #   place_temp_arr = PlaceTemp.where(place: header).order(:date)
-  #   place_temp_arr.each_with_index do |place_temp, pt_index|
-  #     pt_increment_idx = pt_index + 1
-  #     new_hash[key][:all][pt_increment_idx.to_s] = {}
-  #     new_hash[key][:all][pt_increment_idx.to_s][:id] = place_temp.id
-  #     new_hash[key][:all][pt_increment_idx.to_s][:date] = place_temp.date
-  #     new_hash[key][:all][pt_increment_idx.to_s][:temp] = place_temp.temp
-  #   end
-  # end
-  #
-  # def populate_land_hash_section(header, key, new_hash)
-  #   place_temp_arr = PlaceTemp.where(place: header).order(:date)
-  #   place_temp_arr.each_with_index do |place_temp, pt_index|
-  #     pt_increment_idx = pt_index + 1
-  #     new_hash[key][:land][pt_increment_idx.to_s] = {}
-  #     new_hash[key][:land][pt_increment_idx.to_s][:id] = place_temp.id
-  #     new_hash[key][:land][pt_increment_idx.to_s][:date] = place_temp.date
-  #     new_hash[key][:land][pt_increment_idx.to_s][:temp] = place_temp.temp
-  #   end
-  # end
-  #
-  # def populate_ocean_hash_section(header, key, new_hash)
-  #   place_temp_arr = PlaceTemp.where(place: header).order(:date)
-  #   place_temp_arr.each_with_index do |place_temp, pt_index|
-  #     pt_increment_idx = pt_index + 1
-  #     new_hash[key][:ocean][pt_increment_idx.to_s] = {}
-  #     new_hash[key][:ocean][pt_increment_idx.to_s][:id] = place_temp.id
-  #     new_hash[key][:ocean][pt_increment_idx.to_s][:date] = place_temp.date
-  #     new_hash[key][:ocean][pt_increment_idx.to_s][:temp] = place_temp.temp
-  #   end
-  # end
 end
