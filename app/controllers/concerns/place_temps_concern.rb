@@ -11,7 +11,7 @@ module PlaceTempsConcern
     return_hash = {}
     PlaceTemperatureDAO::FULL_HEADERS[2..29].each_with_index do |header, header_index|
       key = keyitize(header)
-      puts "#{header_index}\t#{key}"
+      # puts "#{header_index}\t#{key}"
       if [0, 3, 6, 9, 12, 15, 18, 21].member?(header_index)
         return_hash[keyitize(header).to_sym] = { all: {}, land: {}, ocean: {} }
       elsif [24, 25, 26].member?(header_index)
@@ -25,7 +25,7 @@ module PlaceTempsConcern
     new_hash = blank_hash
     PlaceTemperatureDAO::FULL_HEADERS[2..29].each_with_index do |header, header_index|
       key = keyitize(header).to_sym
-      puts "#{header_index}\t#{key}"
+      # puts "#{header_index}\t#{key}"
       if [0, 3, 6, 9, 12, 15, 18, 21].member?(header_index)
         new_hash[key][:all] = {}
         new_hash[key][:all][:place] = header
