@@ -20,6 +20,16 @@ class PlaceTempsController < ApplicationController
     render json: new_hash_format # .to_json
   end
 
+  def global
+    graph = Scruffy::Graph.new
+    graph.title = 'Global Graph'
+    graph.renderer = Scruffy::Renderers::Standard.new
+    # ref_dt = 35.years.ago  .where('date < ?', ref_dt)
+    arr = PlaceTemp.where(place: 'Globe').order(:date).pluck(:date, :temp)
+    temps = arr.map{ |x| x[1] }
+    graph.add :line, 'Globe', temps
+    graph.render to: 'globe.svg'
+  end
   private
 
   # Use callbacks to share common setup or constraints between actions.
